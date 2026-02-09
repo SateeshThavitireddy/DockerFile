@@ -1,12 +1,16 @@
 services:
   catalogue:
-    build: ./catalogue
+    build:
+      context: ./catalogue
+      dockerfile: Dockerfile
     image: catalogue:v1
     container_name: catalogue
     depends_on:
       - mongodb
   mongodb:
-    build: ./mongodb
+    build:
+      context: ./mongodb
+      dockerfile: Dockerfile
     image: mongodb:v1
     container_name: mongodb
     volumes:
@@ -38,21 +42,27 @@ services:
       - redis
       - mongodb
   cart:
-    build: ./cart
+    build:
+      context: ./cart
+      dockerfile: Dockerfile
     image: cart:v1
     container_name: cart
     depends_on:
       - redis
       - catalogue
   shipping:
-    build: ./shipping
+    build:
+      context: ./shipping
+      dockerfile: Dockerfile
     image: shipping:v1
     container_name: shipping
     depends_on:
       - mysql
       - cart
   payment:
-    build: ./payment
+    build:
+      context: ./payment
+      dockerfile: Dockerfile
     image: payment:v1
     container_name: payment
     depends_on:
@@ -60,7 +70,9 @@ services:
       - cart
       - user
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     image: frontend:v1
     container_name: frontend
     ports:
