@@ -1,7 +1,7 @@
 FROM maven:3.9.11
 WORKDIR /app
 EXPOSE 8080
-COPT pom.xml
+COPY pom.xml
 COPY src ./src
 RUN mvn clean package
 RUN mv target/shipping-1.0.jar shipping.jar
