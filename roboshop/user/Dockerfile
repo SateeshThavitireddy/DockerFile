@@ -7,4 +7,4 @@ ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/users"
 RUN npm install
 EXPOSE 8080
-CMD ["npm", "start"]    
+CMD ["node", "server.js"]    
